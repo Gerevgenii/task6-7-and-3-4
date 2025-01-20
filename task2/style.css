@@ -1,0 +1,234 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: relative;
+  background: #333;
+  color: #fff;
+  padding: 10px 15px;
+}
+
+header #menu-label {
+  display: none;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.dropdown, .sub-dropdown-1 {
+  display: none;
+}
+
+.dropdown li:not(:first-child),
+.sub-dropdown-1 li:not(:first-child) {
+  border-top: 1px solid #444;
+}
+
+.dropdown li a,
+.dropdown li span {
+  margin: 20px 0;
+  text-align: center;
+  display: block;
+  color: #dfd1d1;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.button {
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  background: #333;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dropdown {
+  list-style: none;
+  flex-direction: column;
+
+  display: flex;
+
+  position: fixed;
+  left: 10px;
+  top: 83px;
+
+  margin: 0;
+  border-radius: 16px;
+  padding: 0;
+  background: #333;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s ease, transform .3s ease, visibility .5s ease-in;
+}
+
+.sub-dropdown-1,
+.sub-dropdown-2 {
+
+  display: flex;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 97vh;
+  height: 100%;
+
+  margin: 0;
+  border-radius: 16px;
+  padding: 10px;
+  background: #333;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s ease, transform .3s ease, visibility .5s ease-in;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.mid {
+  padding: 16px;
+  transition: color .3s ease;
+}
+
+.mid > .turn-on {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.turn-off {
+  display: none;
+}
+
+body:has(> header > nav > ul > .one > .turn-on.pressed) .dropdown1,
+body:has(> header > nav > ul > .two > .turn-on.pressed) .dropdown2,
+body:has(> header > nav > ul > .three > .turn-on.pressed) .dropdown3,
+body:has(> header > nav > ul > .four > .turn-on.pressed) .dropdown4 {
+  visibility: visible;
+  transform: translateY(16px);
+  opacity: 1;
+}
+
+body:has(.checkbox1.pressed) .sub-dropdown1,
+body:has(.checkbox2.pressed) .sub-dropdown2,
+body:has(.checkbox3.pressed) .sub-dropdown3,
+body:has(.checkbox4.pressed) .sub-dropdown4,
+body:has(.checkbox5.pressed) .sub-dropdown5,
+body:has(.checkbox6.pressed) .sub-dropdown6,
+body:has(.checkbox7.pressed) .sub-dropdown7,
+body:has(.checkbox8.pressed) .sub-dropdown8 {
+  visibility: visible;
+  transform: translateX(100px);
+  opacity: 1;
+}
+
+body:has(> header > nav > ul > .one > .turn-on.pressed) :is(.sub-dropdown-2, .sub-dropdown-3, .sub-dropdown-4),
+body:has(> header > nav > ul > .two > .turn-on.pressed) :is(.sub-dropdown-1, .sub-dropdown-3, .sub-dropdown-4),
+body:has(> header > nav > ul > .three > .turn-on.pressed) :is(.sub-dropdown-1, .sub-dropdown-2, .sub-dropdown-4),
+body:has(> header > nav > ul > .four > .turn-on.pressed) :is(.sub-dropdown-1, .sub-dropdown-2, .sub-dropdown-3),
+body:has(> header > nav > ul > .mid > .turn-on.unpressed) :is(.sub-dropdown-1, .sub-dropdown-2, .sub-dropdown-3, .sub-dropdown-4) {
+  display: none;
+!important;
+  visibility: hidden;
+  opacity: 0;
+  width: initial;
+  height: initial;
+}
+
+@media screen and (max-width: 500px) {
+  header #menu-label {
+    display: block;
+  }
+
+  header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    background: #333;
+  }
+
+  header nav ul li ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    background: #333;
+  }
+
+  #menu-label {
+    display: block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    background: #444;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  header:has(> #menu-label.pressed) > nav > ul {
+    display: flex;
+  }
+
+  li:has(> #menu-label1.pressed) > ul,
+  li:has(> #menu-label2.pressed) > ul,
+  li:has(> #menu-label3.pressed) > ul,
+  li:has(> #menu-label4.pressed) > ul {
+    position: relative;
+    display: flex;
+  }
+
+  body:has(.checkbox1.pressed) .sub-dropdown1,
+  body:has(.checkbox2.pressed) .sub-dropdown2,
+  body:has(.checkbox3.pressed) .sub-dropdown3,
+  body:has(.checkbox4.pressed) .sub-dropdown4,
+  body:has(.checkbox5.pressed) .sub-dropdown5,
+  body:has(.checkbox6.pressed) .sub-dropdown6,
+  body:has(.checkbox7.pressed) .sub-dropdown7,
+  body:has(.checkbox8.pressed) .sub-dropdown8 {
+    visibility: visible;
+    position: relative;
+    transform: translateY(0px);
+    opacity: 1;
+    align-items: center;
+  }
+
+  .dropdown,
+  .sub-dropdown-1,
+  .sub-dropdown-2,
+  .sub-dropdown-3,
+  .sub-dropdown-4 {
+    position: absolute;
+    top: initial;
+    left: initial;
+    width: initial;
+    height: initial;
+  }
+
+  .dropdown li a,
+  .dropdown li p,
+  .dropdown li span {
+    text-align: left;
+  }
+
+}
+
+
