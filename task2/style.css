@@ -22,12 +22,13 @@ header nav ul {
   display: flex;
 }
 
-.dropdown, .sub-dropdown-1 {
+.dropdown,
+.sub-dropdown {
   display: none;
 }
 
 .dropdown li:not(:first-child),
-.sub-dropdown-1 li:not(:first-child) {
+.sub-dropdown li:not(:first-child) {
   border-top: 1px solid #444;
 }
 
@@ -73,8 +74,7 @@ header nav ul {
   transition: opacity .3s ease, transform .3s ease, visibility .5s ease-in;
 }
 
-.sub-dropdown-1,
-.sub-dropdown-2 {
+.sub-dropdown {
 
   display: flex;
 
@@ -114,39 +114,16 @@ input[type="radio"] {
   display: none;
 }
 
-body:has(> header > nav > ul > .one > .turn-on.pressed) .dropdown1,
-body:has(> header > nav > ul > .two > .turn-on.pressed) .dropdown2,
-body:has(> header > nav > ul > .three > .turn-on.pressed) .dropdown3,
-body:has(> header > nav > ul > .four > .turn-on.pressed) .dropdown4 {
+.dropdown.show {
   visibility: visible;
   transform: translateY(16px);
   opacity: 1;
 }
 
-body:has(.checkbox1.pressed) .sub-dropdown1,
-body:has(.checkbox2.pressed) .sub-dropdown2,
-body:has(.checkbox3.pressed) .sub-dropdown3,
-body:has(.checkbox4.pressed) .sub-dropdown4,
-body:has(.checkbox5.pressed) .sub-dropdown5,
-body:has(.checkbox6.pressed) .sub-dropdown6,
-body:has(.checkbox7.pressed) .sub-dropdown7,
-body:has(.checkbox8.pressed) .sub-dropdown8 {
+.sub-dropdown.show {
   visibility: visible;
   transform: translateX(100px);
   opacity: 1;
-}
-
-body:has(> header > nav > ul > .one > .turn-on.pressed) :is(.sub-dropdown-2, .sub-dropdown-3, .sub-dropdown-4),
-body:has(> header > nav > ul > .two > .turn-on.pressed) :is(.sub-dropdown-1, .sub-dropdown-3, .sub-dropdown-4),
-body:has(> header > nav > ul > .three > .turn-on.pressed) :is(.sub-dropdown-1, .sub-dropdown-2, .sub-dropdown-4),
-body:has(> header > nav > ul > .four > .turn-on.pressed) :is(.sub-dropdown-1, .sub-dropdown-2, .sub-dropdown-3),
-body:has(> header > nav > ul > .mid > .turn-on.unpressed) :is(.sub-dropdown-1, .sub-dropdown-2, .sub-dropdown-3, .sub-dropdown-4) {
-  display: none;
-!important;
-  visibility: hidden;
-  opacity: 0;
-  width: initial;
-  height: initial;
 }
 
 @media screen and (max-width: 500px) {
@@ -188,22 +165,12 @@ body:has(> header > nav > ul > .mid > .turn-on.unpressed) :is(.sub-dropdown-1, .
     display: flex;
   }
 
-  li:has(> #menu-label1.pressed) > ul,
-  li:has(> #menu-label2.pressed) > ul,
-  li:has(> #menu-label3.pressed) > ul,
-  li:has(> #menu-label4.pressed) > ul {
+  .dropdown.show {
     position: relative;
     display: flex;
   }
 
-  body:has(.checkbox1.pressed) .sub-dropdown1,
-  body:has(.checkbox2.pressed) .sub-dropdown2,
-  body:has(.checkbox3.pressed) .sub-dropdown3,
-  body:has(.checkbox4.pressed) .sub-dropdown4,
-  body:has(.checkbox5.pressed) .sub-dropdown5,
-  body:has(.checkbox6.pressed) .sub-dropdown6,
-  body:has(.checkbox7.pressed) .sub-dropdown7,
-  body:has(.checkbox8.pressed) .sub-dropdown8 {
+  .sub-dropdown.show {
     visibility: visible;
     position: relative;
     transform: translateY(0px);
@@ -212,10 +179,7 @@ body:has(> header > nav > ul > .mid > .turn-on.unpressed) :is(.sub-dropdown-1, .
   }
 
   .dropdown,
-  .sub-dropdown-1,
-  .sub-dropdown-2,
-  .sub-dropdown-3,
-  .sub-dropdown-4 {
+  .sub-dropdown {
     position: absolute;
     top: initial;
     left: initial;
@@ -228,7 +192,6 @@ body:has(> header > nav > ul > .mid > .turn-on.unpressed) :is(.sub-dropdown-1, .
   .dropdown li span {
     text-align: left;
   }
-
 }
 
 
